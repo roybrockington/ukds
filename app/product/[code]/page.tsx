@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import guitars from '@/app/assets/guitars.json'
+import products from '@/app/assets/products.json'
 import Image from 'next/image'
 
 export default function ProductPage() {
@@ -11,7 +11,7 @@ export default function ProductPage() {
   const [isProcessing, setIsProcessing] = useState(false)
 
   const productCode = params.code as string
-  const product = guitars.find(g => g.sku.toString() === productCode)
+  const product = products.find(g => g.sku.toString() === productCode)
 
   useEffect(() => {
     if (product) {
@@ -64,7 +64,7 @@ export default function ProductPage() {
     <div className="min-h-screen flex items-center justify-center px-8">
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 text-center">
         <Image
-          src={`https://soundservicelabs.com/api/img/${product.brand}.jpg`}
+          src={`https://media.sound-service.eu/images/brands/${product.brand}.jpg`}
           className="mx-auto mb-4 dark:invert"
           alt={product.brand}
           width={120}

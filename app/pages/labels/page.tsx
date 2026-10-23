@@ -1,6 +1,6 @@
 "use client"
 
-import guitars from "../../assets/guitars.json"
+import products from "../../assets/products.json"
 import { QRCodeSVG } from 'qrcode.react'
 
 const Labels = () => {
@@ -42,9 +42,9 @@ const Labels = () => {
       {/* L7160 Grid Container */}
       <div className="w-[210mm] h-[297mm] mx-auto bg-white p-[15.5mm_7mm_15.5mm_4.7mm]">
         <div className="grid grid-cols-7 gap-x-[2.5mm] gap-y-0 w-full h-full">
-          {guitars.map((guitar, index) => (
+          {products.map((product, index) => (
             <div
-              key={guitar.sku}
+              key={product.sku}
               className="w-[25.4mm] h-[38.1mm] flex flex-col justify-between p-[1.5mm] text-black border border-gray-300 overflow-hidden"
               style={{
                 pageBreakInside: 'avoid',
@@ -53,20 +53,20 @@ const Labels = () => {
             >
               {/* Brand */}
               <div className="text-[6pt] font-bold uppercase truncate text-center">
-                {guitar.brand}
+                {product.brand}
               </div>
 
               {/* Product Name */}
               <div className="text-[5pt] font-semibold leading-tight text-center flex-grow flex items-start justify-center overflow-hidden">
                 <span className="line-clamp-2">
-                  {guitar.name}
+                  {product.name}
                 </span>
               </div>
 
               {/* QR Code */}
               <div className="flex justify-center my-[1mm]">
                 <QRCodeSVG
-                  value={getProductUrl(guitar.sku)}
+                  value={getProductUrl(product.sku)}
                   size={50}
                   level="M"
                   includeMargin={false}
@@ -76,10 +76,10 @@ const Labels = () => {
               {/* Prices */}
               <div className="flex flex-col items-center gap-[0.5mm]">
                 <div className="text-[5pt] line-through text-gray-600">
-                  £{guitar.ssp}
+                  £{product.ssp}
                 </div>
                 <div className="text-[8pt] font-bold text-red-800">
-                  £{guitar.show}
+                  £{product.show}
                 </div>
               </div>
             </div>

@@ -51,7 +51,7 @@ const Products = ({ products }: { products: Product[] }) => {
           className={`mb-2 list-none flex flex-col items-center gap-4 pb-4 border-b-1 border-b-zinc-300 w-full`}
         >
           <Image
-            src={`https://soundservicelabs.com/api/img/${product.brand}.jpg`}
+            src={`https://media.sound-service.eu/images/brands/${product.brand}.jpg`}
             className="dark:invert"
             alt=""
             width={80}
@@ -76,7 +76,7 @@ const Products = ({ products }: { products: Product[] }) => {
           <button
             onClick={() => handleCheckout(product)}
             disabled={loadingProduct === product.sku}
-            className="py-4 px-8 uppercase bg-gradient-to-r bg-red-800 text-white rounded drop-shadow-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="py-4 px-8 uppercase bg-gradient-to-r bg-pink-800 text-white rounded drop-shadow-lg hover:bg-pink-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loadingProduct === product.sku ? 'Processing...' : 'Buy'}
           </button>

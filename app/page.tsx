@@ -1,6 +1,6 @@
 "use client"
 
-import guitars from "./assets/guitars.json"
+import products from "./assets/products.json"
 import merch from "./assets/merch.json"
 import { useState } from "react"
 import Products from "./components/Products"
@@ -12,16 +12,16 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
 
-  const brands = ["ESP", "LTD", "E-II", "Dixon", "Los Cabos"]
+  const brands = [...new Set(products.map(product => product.brand))]
 
   const selectBrand = (brand: string) => {
     setSelectedBrand(selectedBrand === brand ? null : brand)
     setIsMenuOpen(false)
   }
 
-  const filteredGuitars = selectedBrand
-    ? guitars.filter(guitar => guitar.brand === selectedBrand)
-    : guitars
+  const filteredProducts = selectedBrand
+    ? products.filter(product => product.brand === selectedBrand)
+    : products
 
   return (
     <div className="font-sans min-h-screen px-8">
@@ -59,7 +59,7 @@ export default function Home() {
                     : 'text-gray-800 dark:text-gray-200'
                     }`}
                 >
-                  <img src={`https://soundservicelabs.com/api/img/${brand}.jpg`} alt={brand} className="max-h-10" />
+                  <img src={`https://media.sound-service.eu/images/brands/${brand}.jpg`} alt={brand} className="max-h-10" />
                 </button>
               ))}
             </div>
@@ -69,7 +69,7 @@ export default function Home() {
                   setSelectedBrand(null)
                   setIsMenuOpen(false)
                 }}
-                className="mt-3 w-full text-sm text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                className="mt-3 w-full text-sm text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-300"
               >
                 Show All
               </button>
@@ -81,7 +81,7 @@ export default function Home() {
         <div className="w-full flex justify-between items-center mb-4 pb-2 border-b-1 border-b-zinc-300">
           <span className="flex-grow"></span>
         </div>
-        <Products products={filteredGuitars} />
+        <Products products={filteredProducts} />
       </main>
     </div>
   )
