@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
     })
 
     const { name, price, code } = await req.json()
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || req.nextUrl.origin
 
     // Validate required fields
     if (!name || !price) {
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
       after_completion: {
         type: 'redirect',
         redirect: {
-          url: `${process.env.NEXT_PUBLIC_APP_URL}/success`,
+          url: `${appUrl}/success`,
         },
       },
     })

@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import ProductImage from "./ProductImage"
 
 type Product = {
   sku: number
@@ -60,8 +61,8 @@ const Products = ({ products }: { products: Product[] }) => {
           />
           <h3 className="text-xl font-bold text-center">{product.name}</h3>
           <div className="flex">
-            <Image
-              src={`https://media.sound-service.eu/Artikelbilder/Shopsystem/278x148/${product.img}`}
+            <ProductImage
+              img={product.img}
               className="dark:rounded-xl"
               alt={product.name}
               width={180}

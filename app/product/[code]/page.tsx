@@ -4,6 +4,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import products from '@/app/assets/products.json'
 import Image from 'next/image'
+import ProductImage from '@/app/components/ProductImage'
 
 export default function ProductPage() {
   const params = useParams()
@@ -74,8 +75,8 @@ export default function ProductPage() {
         <p className="text-gray-600 dark:text-gray-300 mb-4">{product.brand}</p>
 
         <div className="mb-6">
-          <Image
-            src={`https://media.sound-service.eu/Artikelbilder/Shopsystem/278x148/${product.img}`}
+          <ProductImage
+            img={product.img}
             className="mx-auto dark:rounded-xl"
             alt={product.name}
             width={200}

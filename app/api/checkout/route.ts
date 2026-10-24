@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
     });
 
     const { product } = await request.json();
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || request.nextUrl.origin;
 
     if (!product) {
       return NextResponse.json(
@@ -36,8 +37,8 @@ export async function POST(request: NextRequest) {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/`,
+      success_url: `${appUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/`,
       metadata: {
         product_sku: product.sku.toString(),
         brand: product.brand,
